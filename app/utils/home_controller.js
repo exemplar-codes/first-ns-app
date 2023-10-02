@@ -14,7 +14,7 @@ const _discover_url = async () => {
   // early return
   for (let i = 0; i < 10; i++) {
     const try_url = `http://192.168.0.10${i}:4000`;
-    console.log("Trying", { try_url });
+    // console.log("Trying", { try_url });
     try {
       const resp = await fetch(try_url);
       if (resp.ok) {
@@ -24,7 +24,7 @@ const _discover_url = async () => {
         break;
       }
     } catch (error) {
-      console.log("Not found", { try_url });
+      // console.log("Not found", { try_url });
     }
   }
 
