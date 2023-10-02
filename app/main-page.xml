@@ -11,6 +11,7 @@
         <TextView hint="{{ xHint }}" text="{{ xValue }}"></TextView>
         <Button text="Submit" tap="{{ xOnSubmitButton }}" class="-primary" />
         <Button text="Clear" tap="{{ xOnClearButton }}" class="-primary" />
+        <Button text="Reset" tap="{{ xOnResetButton }}" class="-primary" />
         <TextView hint="Output" text="{{ xResult }}"></TextView>
     </StackLayout>
 </ScrollView>

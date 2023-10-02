@@ -22,7 +22,8 @@ export function createViewModel() {
 
   // new code (my code)
   viewModel.xHint = "Enter github username"; // input placeholder
-  viewModel.xValue = "sanjarcode"; // no need of setter
+  const initialInput = "sanjarcode";
+  viewModel.xValue = initialInput; // no need of setter
   viewModel.xResult = ""; // no need of setter
   viewModel.xOnSubmitButton = () => {
     const username = viewModel.xValue;
@@ -34,6 +35,9 @@ export function createViewModel() {
   };
   viewModel.xOnClearButton = () => {
     viewModel.set("xResult", "");
+  };
+  viewModel.xOnResetButton = () => {
+    viewModel.set("xValue", initialInput);
   };
 
   return viewModel;
