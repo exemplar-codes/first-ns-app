@@ -1,4 +1,6 @@
 import { Observable } from "@nativescript/core";
+import { exit } from "nativescript-exit";
+
 import home_controller from "./utils/home_controller";
 const { hc_setup, hc, hc_url, hc_l, hc_f } = home_controller;
 
@@ -67,5 +69,12 @@ export function createViewModel() {
     hc_l();
   };
 
+  // fan-stuff for lock screen
+  // app opens and closes
+  setTimeout(async () => {
+    await hc_setup();
+    await hc_f(); // await hc_l();
+    exit();
+  }, 0);
   return viewModel;
 }
