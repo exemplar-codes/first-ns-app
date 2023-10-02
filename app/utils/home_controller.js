@@ -61,7 +61,6 @@ const hc_l = async () => {
   let url = hc_url();
   url = `${url}/toggle/1`;
 
-  console.log(url, "called");
   await fetch(url);
   return url;
 };
