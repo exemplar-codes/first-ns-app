@@ -8,11 +8,28 @@ const setUrl = (value) => {
   _found_url = value;
 };
 
-const _discover_url = async () => {
+const DEFAULT_GUESSES = [3, 7];
+const _discover_url = async (guesses = DEFAULT_GUESSES) => {
+  // if (guess !== null) {
+  //   const guess_url = `http://192.168.0.10${guess}:4000`;
+  //   const resp = await fetch(guess_url);
+  //   if (resp.ok) {
+  //     console.log("Guess, found", { guess_url });
+  //     return guess_url;
+  //   }
+  // }
+
   let url = "";
 
+  const addresses = [
+    ...guesses,
+    ...Array(10)
+      .fill(null)
+      .map((__, i) => i),
+  ];
+
   // early return
-  for (let i = 0; i < 10; i++) {
+  for (let i of addresses) {
     const try_url = `http://192.168.0.10${i}:4000`;
     // console.log("Trying", { try_url });
     try {
