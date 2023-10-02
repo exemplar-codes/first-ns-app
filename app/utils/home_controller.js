@@ -35,6 +35,7 @@ const _discover_url = async () => {
 const hc_setup = async () => {
   const discovered_url = await _discover_url(); // time varies - max 12s, min 2s
   setUrl(discovered_url);
+  return discovered_url;
 };
 
 // get stored URL
