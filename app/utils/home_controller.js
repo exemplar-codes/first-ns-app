@@ -1,3 +1,5 @@
+// To test, run `NODE_OPTIONS="--experimental-fetch" node home_controller.js`
+
 let _found_url = "";
 // export
 const getUrl = () => {
