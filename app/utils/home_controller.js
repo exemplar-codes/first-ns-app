@@ -13,24 +13,23 @@ const setUrl = (value) => {
 // export
 const _discover_url = async () => {
   let url = "";
-  await Promise.all(
-    Array(10)
-      .fill(null)
-      .map(async (_, i) => {
-        const try_url = `http://192.168.0.10${i}:4000`;
-        // console.log("Trying", try_url);
 
-        try {
-          const resp = await fetch(try_url);
-          if (resp.ok) {
-            url = try_url;
-            console.log("Found", { try_url });
-          }
-        } catch (error) {
-          //   console.log("Not found", { try_url });
-        }
-      })
-  );
+  // early return
+  for (let i = 0; i < 10; i++) {
+    const try_url = `http://192.168.0.10${i}:4000`;
+    // console.log("Trying", { try_url });
+    try {
+      const resp = await fetch(try_url);
+      if (resp.ok) {
+        url = try_url;
+        // console.log("Found", { try_url });
+
+        break;
+      }
+    } catch (error) {
+      //   console.log("Not found", { try_url });
+    }
+  }
 
   return url;
 };
@@ -38,7 +37,7 @@ const _discover_url = async () => {
 // discovers, stores url in file
 // export
 const hc_setup = async () => {
-  const discovered_url = await _discover_url();
+  const discovered_url = await _discover_url(); // time varies - max 12s, min 2s
   setUrl(discovered_url);
 };
 
