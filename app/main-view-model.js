@@ -22,16 +22,22 @@ export function createViewModel() {
 
   // new code (my code)
   viewModel.xHint = "Enter github username"; // input placeholder
-  const initialInput = "sanjarcode";
+  const initialInput = `fetch("https://api.github.com/users/sanjarcode")
+  .then((x) => x.json())
+  .then((body) => {
+    viewModel.set("xResult", JSON.stringify(body));
+  })`;
   viewModel.xValue = initialInput; // no need of setter
   viewModel.xResult = ""; // no need of setter
   viewModel.xOnSubmitButton = () => {
-    const username = viewModel.xValue;
-    fetch(`https://api.github.com/users/${username}`)
-      .then((x) => x.json())
-      .then((body) => {
-        viewModel.set("xResult", JSON.stringify(body));
-      });
+    const input = viewModel.xValue;
+    viewModel.set('xResult', eval(input))
+    // const username = viewModel.xValue;
+    // fetch(`https://api.github.com/users/${username}`)
+    //   .then((x) => x.json())
+    //   .then((body) => {
+    //     viewModel.set("xResult", JSON.stringify(body));
+    //   });
   };
   viewModel.xOnClearButton = () => {
     viewModel.set("xResult", "");
