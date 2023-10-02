@@ -55,8 +55,8 @@ export function createViewModel() {
     console.log({ discovered_url: url });
     if (url) {
       viewModel.discoveredUrl = url;
+      viewModel.set("discoveredUrl", `✅ ${url}`);
     }
-    viewModel.set("discoveredUrl", `✅ ${url}`);
   };
   viewModel.xOnFanButton = () => {
     console.log(hc_url(), "fan toggled");
