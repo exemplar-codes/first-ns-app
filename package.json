@@ -5,7 +5,8 @@
   "private": true,
   "dependencies": {
     "@nativescript/core": "~8.5.0",
-    "@nativescript/theme": "~3.0.2"
+    "@nativescript/theme": "~3.0.2",
+    "nativescript-exit": "^1.0.1"
   },
   "devDependencies": {
     "@nativescript/android": "8.5.4",
