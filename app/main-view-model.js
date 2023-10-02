@@ -10,14 +10,15 @@ function getMessage(counter) {
 
 export function createViewModel() {
   const viewModel = new Observable();
-  viewModel.counter = 2;
-  viewModel.message = getMessage(viewModel.counter);
+  // Hello, world code by NS
+  // viewModel.counter = 2;
+  // viewModel.message = getMessage(viewModel.counter);
 
-  viewModel.onTap = () => {
-    const countMessage = getMessage(viewModel.counter);
-    viewModel.counter--;
-    viewModel.set("message", countMessage);
-  };
+  // viewModel.onTap = () => {
+  //   const countMessage = getMessage(viewModel.counter);
+  //   viewModel.counter--;
+  //   viewModel.set("message", countMessage);
+  // };
 
   // new code (my code)
   viewModel.xHint = "Enter github username"; // input placeholder

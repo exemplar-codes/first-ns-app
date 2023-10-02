@@ -3,9 +3,10 @@
 
 <ScrollView orientation="vertical">
     <StackLayout class="p-20">
-        <Label text="Tap the button" class="h1 text-center" />
+        <!-- Hello world code -->
+        <!-- <Label text="Tap the button" class="h1 text-center" />
         <Button text="TAP" tap="{{ onTap }}" class="-primary" />
-        <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+        <Label text="{{ message }}" class="h2 text-center" textWrap="true" /> -->
 
         <TextView hint="{{ xHint }}" text="{{ xValue }}"></TextView>
         <Button text="Submit" tap="{{ xOnSubmitButton }}" class="-primary" />
