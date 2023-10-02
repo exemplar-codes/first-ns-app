@@ -1,4 +1,6 @@
 import { Observable } from "@nativescript/core";
+import home_controller from "./utils/home_controller";
+const { hc_setup, hc, hc_url, hc_l, hc_f } = home_controller;
 
 function getMessage(counter) {
   if (counter <= 0) {
@@ -31,7 +33,7 @@ export function createViewModel() {
   viewModel.xResult = ""; // no need of setter
   viewModel.xOnSubmitButton = () => {
     const input = viewModel.xValue;
-    viewModel.set('xResult', eval(input))
+    viewModel.set("xResult", eval(input));
     // const username = viewModel.xValue;
     // fetch(`https://api.github.com/users/${username}`)
     //   .then((x) => x.json())
@@ -44,6 +46,25 @@ export function createViewModel() {
   };
   viewModel.xOnResetButton = () => {
     viewModel.set("xValue", initialInput);
+  };
+
+  // fan stuff
+  viewModel.discoveredUrl = "❌ http://192.168.0.10x:4000";
+  viewModel.xOnDiscoverButton = async () => {
+    const url = await hc_setup();
+    console.log({ discovered_url: url });
+    if (url) {
+      viewModel.discoveredUrl = url;
+    }
+    viewModel.set("discoveredUrl", `✅ ${url}`);
+  };
+  viewModel.xOnFanButton = () => {
+    console.log(hc_url(), "fan toggled");
+    hc_f();
+  };
+  viewModel.xOnLightButton = () => {
+    console.log(hc_url(), "light toggled");
+    hc_l();
   };
 
   return viewModel;

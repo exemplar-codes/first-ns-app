@@ -8,6 +8,14 @@
         <Button text="TAP" tap="{{ onTap }}" class="-primary" />
         <Label text="{{ message }}" class="h2 text-center" textWrap="true" /> -->
 
+        <Label text="Home controller" class="h2 text-center" textWrap="true" />
+        <Label text="{{ discoveredUrl }}" class="h2 text-center" textWrap="true" />
+        <Button text="Discover" tap="{{ xOnDiscoverButton }}" class="-primary" />
+        <Button text="Fan" tap="{{ xOnFanButton }}" class="-primary" />
+        <Button text="Light" tap="{{ xOnLightButton }}" class="-primary" />
+
+        <Label class="line" text="-----------------------------"></Label>
+        <Label text="JS eval (write anything)" class="h2 pt-100 text-center" textWrap="true" />
         <TextView hint="{{ xHint }}" text="{{ xValue }}"></TextView>
         <Button text="Submit" tap="{{ xOnSubmitButton }}" class="-primary" />
         <Button text="Clear" tap="{{ xOnClearButton }}" class="-primary" />
