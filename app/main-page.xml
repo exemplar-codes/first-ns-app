@@ -5,5 +5,9 @@
         <Label text="Tap the button" class="h1 text-center" />
         <Button text="TAP" tap="{{ onTap }}" class="-primary" />
         <Label text="{{ message }}" class="h2 text-center" textWrap="true" />
+
+        <TextView hint="{{ xHint }}" text="{{ xValue }}"></TextView>
+        <Button text="xButton" tap="{{ xOnButtonClick }}" class="-primary" />
+        <HtmlView html="Hell this RN"></HtmlView>
     </StackLayout>
 </Page>
