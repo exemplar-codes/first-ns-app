@@ -1,30 +1,30 @@
 // To test, run `NODE_OPTIONS="--experimental-fetch" node home_controller.js`
 
 let _found_url = "";
-export const getUrl = () => {
+const getUrl = () => {
   return _found_url;
 };
-export const setUrl = (value) => {
+const setUrl = (value) => {
   _found_url = value;
 };
 
-export const _discover_url = async () => {
+const _discover_url = async () => {
   let url = "";
 
   // early return
   for (let i = 0; i < 10; i++) {
     const try_url = `http://192.168.0.10${i}:4000`;
-    // console.log("Trying", { try_url });
+    console.log("Trying", { try_url });
     try {
       const resp = await fetch(try_url);
       if (resp.ok) {
         url = try_url;
-        // console.log("Found", { try_url });
+        console.log("Found", { try_url });
 
         break;
       }
     } catch (error) {
-      //   console.log("Not found", { try_url });
+      console.log("Not found", { try_url });
     }
   }
 
@@ -32,38 +32,41 @@ export const _discover_url = async () => {
 };
 
 // discovers, stores url in file
-export const hc_setup = async () => {
+const hc_setup = async () => {
   const discovered_url = await _discover_url(); // time varies - max 12s, min 2s
   setUrl(discovered_url);
 };
 
 // get stored URL
-export const hc_url = () => {
+const hc_url = () => {
   return getUrl();
 };
 
-export const hc = async () => {
+const hc = async () => {
   let url = hc_url();
 
   await fetch(url);
   return url;
 };
 
-export const hc_f = async () => {
+const hc_f = async () => {
   let url = hc_url();
-  url = `$(working_url)/toggle/0`;
+  url = `${url}/toggle/0`;
 
   await fetch(url);
   return url;
 };
 
-export const hc_l = async () => {
+const hc_l = async () => {
   let url = hc_url();
-  url = `$(working_url)/toggle/0`;
+  url = `${url}/toggle/1`;
 
+  console.log(url, "called");
   await fetch(url);
   return url;
 };
+
+const test = "HC is available";
 
 // hc_setup().then(() => {
 //   console.log("print", hc_url());
@@ -71,3 +74,15 @@ export const hc_l = async () => {
 //   console.log("set", setUrl(123));
 //   console.log("print", hc_url());
 // });
+
+export default {
+  getUrl,
+  setUrl,
+  _discover_url,
+  hc_setup,
+  hc_url,
+  hc,
+  hc_f,
+  hc_l,
+  test,
+};
