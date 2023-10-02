@@ -40,7 +40,7 @@ export function createViewModel() {
     //   });
   };
   viewModel.xOnClearButton = () => {
-    viewModel.set("xResult", "");
+    viewModel.set("xValue", "");
   };
   viewModel.xOnResetButton = () => {
     viewModel.set("xValue", initialInput);
