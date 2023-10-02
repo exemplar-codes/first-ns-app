@@ -1,17 +1,14 @@
 // To test, run `NODE_OPTIONS="--experimental-fetch" node home_controller.js`
 
 let _found_url = "";
-// export
-const getUrl = () => {
+export const getUrl = () => {
   return _found_url;
 };
-// export
-const setUrl = (value) => {
+export const setUrl = (value) => {
   _found_url = value;
 };
 
-// export
-const _discover_url = async () => {
+export const _discover_url = async () => {
   let url = "";
 
   // early return
@@ -35,28 +32,24 @@ const _discover_url = async () => {
 };
 
 // discovers, stores url in file
-// export
-const hc_setup = async () => {
+export const hc_setup = async () => {
   const discovered_url = await _discover_url(); // time varies - max 12s, min 2s
   setUrl(discovered_url);
 };
 
 // get stored URL
-// export
-const hc_url = () => {
+export const hc_url = () => {
   return getUrl();
 };
 
-// export
-const hc = async () => {
+export const hc = async () => {
   let url = hc_url();
 
   await fetch(url);
   return url;
 };
 
-// export
-const hc_f = async () => {
+export const hc_f = async () => {
   let url = hc_url();
   url = `$(working_url)/toggle/0`;
 
@@ -64,8 +57,7 @@ const hc_f = async () => {
   return url;
 };
 
-// export
-const hc_l = async () => {
+export const hc_l = async () => {
   let url = hc_url();
   url = `$(working_url)/toggle/0`;
 
@@ -73,9 +65,9 @@ const hc_l = async () => {
   return url;
 };
 
-hc_setup().then(() => {
-  console.log("print", hc_url());
-  console.log("print again", hc_url());
-  console.log("set", setUrl(123));
-  console.log("print", hc_url());
-});
+// hc_setup().then(() => {
+//   console.log("print", hc_url());
+//   console.log("print again", hc_url());
+//   console.log("set", setUrl(123));
+//   console.log("print", hc_url());
+// });
