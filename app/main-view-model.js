@@ -20,10 +20,19 @@ export function createViewModel() {
   };
 
   // new code (my code)
-  viewModel.xHint = 2; // input placeholder
-  viewModel.xValue = "Hello, world"; // no need of setter
-  viewModel.xOnButtonClick = () => {
-    viewModel.set("message", viewModel.xValue);
+  viewModel.xHint = "Enter github username"; // input placeholder
+  viewModel.xValue = "sanjarcode"; // no need of setter
+  viewModel.xResult = ""; // no need of setter
+  viewModel.xOnSubmitButton = () => {
+    const username = viewModel.xValue;
+    fetch(`https://api.github.com/users/${username}`)
+      .then((x) => x.json())
+      .then((body) => {
+        viewModel.set("xResult", JSON.stringify(body));
+      });
+  };
+  viewModel.xOnClearButton = () => {
+    viewModel.set("xResult", "");
   };
 
   return viewModel;
