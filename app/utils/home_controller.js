@@ -76,4 +76,7 @@ const hc_l = async () => {
 
 hc_setup().then(() => {
   console.log("print", hc_url());
+  console.log("print again", hc_url());
+  console.log("set", setUrl(123));
+  console.log("print", hc_url());
 });
